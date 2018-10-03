@@ -32,7 +32,7 @@ class ApplicationController < Sinatra::Base
   end   
   
   patch '/posts/:id' do 
-    @id = params[:id]
+    @post = Post.find_by_id(params[:id])
   end 
   
   delete '/posts/:id/delete' do 
