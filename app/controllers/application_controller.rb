@@ -17,11 +17,26 @@ class ApplicationController < Sinatra::Base
   end
   
   post '/posts' do 
-    @blog = params[:blog]
+    @post = params[:post]
     erb :index
   end 
   
   get '/posts' do 
     @posts = Post.all 
+    @posts.each do |post|
+      post 
+    end   
     erb :index 
+  end 
+  
+  get '/posts/:id' do 
+    @post = Post.find(params[:id])
+    erb :show 
+  end  
+  
+  get 'posts/:id/edit' do 
+    erb :edit 
+  end   
+  
+  
 end
